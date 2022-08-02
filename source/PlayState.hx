@@ -3360,50 +3360,52 @@ class PlayState extends MusicBeatState
 
 		if(mechanictimelol) {
 			if(buttonspressedsection < mustpresssection) {
-				var ret:Dynamic = callOnLuas('onGameOver', [], false);
-				if(ret != FunkinLua.Function_Stop) {
-					boyfriend.stunned = true;
-					deathCounter++;
-	
-					paused = true;
-	
-					vocals.stop();
-					FlxG.sound.music.stop();
-	
-					persistentUpdate = false;
-					persistentDraw = false;
-					for (tween in modchartTweens) {
-						tween.active = true;
-					}
-					for (timer in modchartTimers) {
-						timer.active = true;
-					}
-					openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
-	
-					#if desktop
-					DiscordClient.changePresence("Game Over - " + detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
-					#end
-					isDead = true;
-				}
-			} else {
-				buttonspressedsection = 0;
-				mustpresssection = 0;
-				var songData = SONG;
-				var noteData:Array<SwagSection>;
-				noteData = songData.notes;
-				var thecoolsection = noteData[curSection];
-				for (songNotes in thecoolsection.sectionNotes) {
-					var gottaHitNote:Bool = thecoolsection.mustHitSection;
-					if (songNotes[1] > 3) {
-						gottaHitNote = !thecoolsection.mustHitSection;
-					}
-					if(gottaHitNote) {
-						mustpresssection += 1;
+				if(mustpresssection != 0) {
+					var ret:Dynamic = callOnLuas('onGameOver', [], false);
+					if(ret != FunkinLua.Function_Stop) {
+						boyfriend.stunned = true;
+						deathCounter++;
+		
+						paused = true;
+		
+						vocals.stop();
+						FlxG.sound.music.stop();
+		
+						persistentUpdate = false;
+						persistentDraw = false;
+						for (tween in modchartTweens) {
+							tween.active = true;
+						}
+						for (timer in modchartTimers) {
+							timer.active = true;
+						}
+						openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x - boyfriend.positionArray[0], boyfriend.getScreenPosition().y - boyfriend.positionArray[1], camFollowPos.x, camFollowPos.y));
+		
+						#if desktop
+						DiscordClient.changePresence("Game Over - " + detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+						#end
+						isDead = true;
 					}
 				}
-				mustpresssection = Math.round(mustpresssection / 2);
-				notestuffTxt.text = buttonspressedsection + '/' + mustpresssection;
 			}
+			
+			buttonspressedsection = 0;
+			mustpresssection = 0;
+			var songData = SONG;
+			var noteData:Array<SwagSection>;
+			noteData = songData.notes;
+			var thecoolsection = noteData[curSection];
+			for (songNotes in thecoolsection.sectionNotes) {
+				var gottaHitNote:Bool = thecoolsection.mustHitSection;
+				if (songNotes[1] > 3) {
+					gottaHitNote = !thecoolsection.mustHitSection;
+				}
+				if(gottaHitNote) {
+					mustpresssection += 1;
+				}
+			}
+			mustpresssection = Math.round(mustpresssection / 2);
+			notestuffTxt.text = buttonspressedsection + '/' + mustpresssection;
 		}
 	}
 
