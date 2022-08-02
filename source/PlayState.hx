@@ -3358,7 +3358,7 @@ class PlayState extends MusicBeatState
 		setOnLuas('curSection', curSection);
 		callOnLuas('onSectionHit', []);
 
-		if(mechanictimelol) {
+		if(mechanictimelol && !endingSong) {
 			if(buttonspressedsection < mustpresssection) {
 				if(mustpresssection != 0) {
 					var ret:Dynamic = callOnLuas('onGameOver', [], false);
