@@ -3395,13 +3395,15 @@ class PlayState extends MusicBeatState
 			var noteData:Array<SwagSection>;
 			noteData = songData.notes;
 			var thecoolsection = noteData[curSection];
-			for (songNotes in thecoolsection.sectionNotes) {
-				var gottaHitNote:Bool = thecoolsection.mustHitSection;
-				if (songNotes[1] > 3) {
-					gottaHitNote = !thecoolsection.mustHitSection;
-				}
-				if(gottaHitNote) {
-					mustpresssection += 1;
+			if(thecoolsection.sectionNotes != null) {
+				for(songNotes in thecoolsection.sectionNotes) {
+					var gottaHitNote:Bool = thecoolsection.mustHitSection;
+					if (songNotes[1] > 3) {
+						gottaHitNote = !thecoolsection.mustHitSection;
+					}
+					if(gottaHitNote) {
+						mustpresssection += 1;
+					}
 				}
 			}
 			mustpresssection = Math.round(mustpresssection / 2);

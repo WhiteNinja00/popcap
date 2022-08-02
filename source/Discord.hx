@@ -15,20 +15,17 @@ class DiscordClient
 	public static var isInitialized:Bool = false;
 	public function new()
 	{
-		trace("Discord Client starting...");
 		DiscordRpc.start({
-			clientID: "863222024192262205",
+			clientID: "1004154435037053070",
 			onReady: onReady,
 			onError: onError,
 			onDisconnected: onDisconnected
 		});
-		trace("Discord Client started.");
 
 		while (true)
 		{
 			DiscordRpc.process();
 			sleep(2);
-			//trace("Discord Client Update");
 		}
 
 		DiscordRpc.shutdown();
@@ -44,19 +41,16 @@ class DiscordClient
 		DiscordRpc.presence({
 			details: "In the Menus",
 			state: null,
-			largeImageKey: 'icon',
-			largeImageText: "Psych Engine"
+			largeImageKey: 'icon'
 		});
 	}
 
 	static function onError(_code:Int, _message:String)
 	{
-		trace('Error! $_code : $_message');
 	}
 
 	static function onDisconnected(_code:Int, _message:String)
 	{
-		trace('Disconnected! $_code : $_message');
 	}
 
 	public static function initialize()
@@ -65,7 +59,6 @@ class DiscordClient
 		{
 			new DiscordClient();
 		});
-		trace("Discord Client initialized");
 		isInitialized = true;
 	}
 
@@ -82,14 +75,10 @@ class DiscordClient
 			details: details,
 			state: state,
 			largeImageKey: 'icon',
-			largeImageText: "Engine Version: " + MainMenuState.psychEngineVersion,
 			smallImageKey : smallImageKey,
-			// Obtained times are in milliseconds so they are divided so Discord can use it
 			startTimestamp : Std.int(startTimestamp / 1000),
             endTimestamp : Std.int(endTimestamp / 1000)
 		});
-
-		//trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp');
 	}
 
 	#if LUA_ALLOWED
