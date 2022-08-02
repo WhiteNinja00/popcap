@@ -30,7 +30,6 @@ class EditorPlayState extends MusicBeatState
 	public var strumLineNotes:FlxTypedGroup<StrumNote>;
 	public var opponentStrums:FlxTypedGroup<StrumNote>;
 	public var playerStrums:FlxTypedGroup<StrumNote>;
-	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
 	public var notes:FlxTypedGroup<Note>;
 	public var unspawnNotes:Array<Note> = [];
@@ -93,18 +92,6 @@ class EditorPlayState extends MusicBeatState
 
 		generateStaticArrows(0);
 		generateStaticArrows(1);
-		/*if(ClientPrefs.middleScroll) {
-			opponentStrums.forEachAlive(function (note:StrumNote) {
-				note.visible = false;
-			});
-		}*/
-		
-		grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
-		add(grpNoteSplashes);
-
-		var splash:NoteSplash = new NoteSplash(100, 100, 0);
-		grpNoteSplashes.add(splash);
-		splash.alpha = 0.0;
 		
 		if (PlayState.SONG.needsVoices)
 			vocals = new FlxSound().loadEmbedded(Paths.voices(PlayState.SONG.song));
@@ -728,12 +715,6 @@ class EditorPlayState extends MusicBeatState
 				case 'Hurt Note': //Hurt note
 					noteMiss();
 					--songMisses;
-					if(!note.isSustainNote) {
-						if(!note.noteSplashDisabled) {
-							spawnNoteSplashOnNote(note);
-						}
-					}
-
 					note.wasGoodHit = true;
 					vocals.volume = 0;
 
@@ -819,11 +800,6 @@ class EditorPlayState extends MusicBeatState
 		{
 			daRating = 'good';
 			//score = 200;
-		}
-
-		if(daRating == 'sick' && !note.noteSplashDisabled)
-		{
-			spawnNoteSplashOnNote(note);
 		}
 		//songScore += score;
 
@@ -1005,36 +981,6 @@ class EditorPlayState extends MusicBeatState
 			spr.playAnim('confirm', true);
 			spr.resetAnim = time;
 		}
-	}
-
-
-	// Note splash shit, duh
-	function spawnNoteSplashOnNote(note:Note) {
-		if(ClientPrefs.noteSplashes && note != null) {
-			var strum:StrumNote = playerStrums.members[note.noteData];
-			if(strum != null) {
-				spawnNoteSplash(strum.x, strum.y, note.noteData, note);
-			}
-		}
-	}
-
-	function spawnNoteSplash(x:Float, y:Float, data:Int, ?note:Note = null) {
-		var skin:String = 'noteSplashes';
-		if(PlayState.SONG.splashSkin != null && PlayState.SONG.splashSkin.length > 0) skin = PlayState.SONG.splashSkin;
-		
-		var hue:Float = ClientPrefs.arrowHSV[data % 4][0] / 360;
-		var sat:Float = ClientPrefs.arrowHSV[data % 4][1] / 100;
-		var brt:Float = ClientPrefs.arrowHSV[data % 4][2] / 100;
-		if(note != null) {
-			skin = note.noteSplashTexture;
-			hue = note.noteSplashHue;
-			sat = note.noteSplashSat;
-			brt = note.noteSplashBrt;
-		}
-
-		var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-		splash.setupNoteSplash(x, y, data, skin, hue, sat, brt);
-		grpNoteSplashes.add(splash);
 	}
 	
 	override function destroy() {

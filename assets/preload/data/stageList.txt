@@ -1,9 +1,4 @@
 stage
-spooky
-philly
-limo
-mall
-mallEvil
-school
-schoolEvil
-tank
+vault
+bookworm
+peggle

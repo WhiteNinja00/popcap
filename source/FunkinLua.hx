@@ -5,7 +5,6 @@ import llua.State;
 import llua.Convert;
 #end
 
-import animateatlas.AtlasFrameMaker;
 import flixel.FlxG;
 import flixel.addons.effects.FlxTrail;
 import flixel.input.keyboard.FlxKey;
@@ -31,10 +30,6 @@ import flixel.util.FlxSave;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.system.FlxAssets.FlxShader;
 
-#if !flash
-import flixel.addons.display.FlxRuntimeShader;
-#end
-
 #if sys
 import sys.FileSystem;
 import sys.io.File;
@@ -42,7 +37,6 @@ import sys.io.File;
 
 import Type.ValueType;
 import Controls;
-import DialogueBoxPsych;
 
 #if hscript
 import hscript.Parser;
@@ -229,33 +223,6 @@ class FunkinLua {
 			#end
 			return false;
 		});
-		
-		Lua_helper.add_callback(lua, "setSpriteShader", function(obj:String, shader:String) {
-			if(!ClientPrefs.shaders) return false;
-
-			#if (!flash && MODS_ALLOWED && sys)
-			if(!PlayState.instance.runtimeShaders.exists(shader) && !initLuaShader(shader))
-			{
-				luaTrace('Shader $shader is missing!', false, false, FlxColor.RED);
-				return false;
-			}
-
-			var killMe:Array<String> = obj.split('.');
-			var leObj:FlxSprite = getObjectDirectly(killMe[0]);
-			if(killMe.length > 1) {
-				leObj = getVarInArray(getPropertyLoopThingWhatever(killMe), killMe[killMe.length-1]);
-			}
-
-			if(leObj != null) {
-				var arr:Array<String> = PlayState.instance.runtimeShaders.get(shader);
-				leObj.shader = new FlxRuntimeShader(arr[0], arr[1]);
-				return true;
-			}
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			#end
-			return false;
-		});
 		Lua_helper.add_callback(lua, "removeSpriteShader", function(obj:String) {
 			var killMe:Array<String> = obj.split('.');
 			var leObj:FlxSprite = getObjectDirectly(killMe[0]);
@@ -269,163 +236,6 @@ class FunkinLua {
 			}
 			return false;
 		});
-
-
-		Lua_helper.add_callback(lua, "getShaderBool", function(obj:String, prop:String) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if (shader == null)
-			{
-				Lua.pushnil(lua);
-				return null;
-			}
-			return shader.getBool(prop);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			Lua.pushnil(lua);
-			return null;
-			#end
-		});
-		Lua_helper.add_callback(lua, "getShaderBoolArray", function(obj:String, prop:String) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if (shader == null)
-			{
-				Lua.pushnil(lua);
-				return null;
-			}
-			return shader.getBoolArray(prop);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			Lua.pushnil(lua);
-			return null;
-			#end
-		});
-		Lua_helper.add_callback(lua, "getShaderInt", function(obj:String, prop:String) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if (shader == null)
-			{
-				Lua.pushnil(lua);
-				return null;
-			}
-			return shader.getInt(prop);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			Lua.pushnil(lua);
-			return null;
-			#end
-		});
-		Lua_helper.add_callback(lua, "getShaderIntArray", function(obj:String, prop:String) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if (shader == null)
-			{
-				Lua.pushnil(lua);
-				return null;
-			}
-			return shader.getIntArray(prop);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			Lua.pushnil(lua);
-			return null;
-			#end
-		});
-		Lua_helper.add_callback(lua, "getShaderFloat", function(obj:String, prop:String) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if (shader == null)
-			{
-				Lua.pushnil(lua);
-				return null;
-			}
-			return shader.getFloat(prop);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			Lua.pushnil(lua);
-			return null;
-			#end
-		});
-		Lua_helper.add_callback(lua, "getShaderFloatArray", function(obj:String, prop:String) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if (shader == null)
-			{
-				Lua.pushnil(lua);
-				return null;
-			}
-			return shader.getFloatArray(prop);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			Lua.pushnil(lua);
-			return null;
-			#end
-		});
-
-
-		Lua_helper.add_callback(lua, "setShaderBool", function(obj:String, prop:String, value:Bool) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if(shader == null) return;
-
-			shader.setBool(prop, value);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			#end
-		});
-		Lua_helper.add_callback(lua, "setShaderBoolArray", function(obj:String, prop:String, values:Dynamic) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if(shader == null) return;
-
-			shader.setBoolArray(prop, values);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			#end
-		});
-		Lua_helper.add_callback(lua, "setShaderInt", function(obj:String, prop:String, value:Int) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if(shader == null) return;
-
-			shader.setInt(prop, value);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			#end
-		});
-		Lua_helper.add_callback(lua, "setShaderIntArray", function(obj:String, prop:String, values:Dynamic) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if(shader == null) return;
-
-			shader.setIntArray(prop, values);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			#end
-		});
-		Lua_helper.add_callback(lua, "setShaderFloat", function(obj:String, prop:String, value:Float) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if(shader == null) return;
-
-			shader.setFloat(prop, value);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			#end
-		});
-		Lua_helper.add_callback(lua, "setShaderFloatArray", function(obj:String, prop:String, values:Dynamic) {
-			#if (!flash && MODS_ALLOWED && sys)
-			var shader:FlxRuntimeShader = getShader(obj);
-			if(shader == null) return;
-
-			shader.setFloatArray(prop, values);
-			#else
-			luaTrace("Platform unsupported for Runtime Shaders!", false, false, FlxColor.RED);
-			#end
-		});
-
-
-		//
 		Lua_helper.add_callback(lua, "getRunningScripts", function(){
 			var runningScripts:Array<String> = [];
 			for (idx in 0...PlayState.instance.luaArray.length)
@@ -560,8 +370,6 @@ class FunkinLua {
 							Lua.pushnumber(lua, Lua.tonumber(luaInstance.lua, -1));
 						}else if(Lua.isstring(luaInstance.lua,-1)){
 							Lua.pushstring(lua, Lua.tostring(luaInstance.lua, -1));
-						}else if(Lua.isboolean(luaInstance.lua,-1)){
-							Lua.pushboolean(lua, Lua.toboolean(luaInstance.lua, -1));
 						}else{
 							Lua.pushnil(lua);
 						}
@@ -2113,40 +1921,6 @@ class FunkinLua {
 		Lua_helper.add_callback(lua, "getRandomBool", function(chance:Float = 50) {
 			return FlxG.random.bool(chance);
 		});
-		Lua_helper.add_callback(lua, "startDialogue", function(dialogueFile:String, music:String = null) {
-			var path:String;
-			#if MODS_ALLOWED
-			path = Paths.modsJson(Paths.formatToSongPath(PlayState.SONG.song) + '/' + dialogueFile);
-			if(!FileSystem.exists(path))
-			#end
-				path = Paths.json(Paths.formatToSongPath(PlayState.SONG.song) + '/' + dialogueFile);
-
-			luaTrace('Trying to load dialogue: ' + path);
-
-			#if MODS_ALLOWED
-			if(FileSystem.exists(path))
-			#else
-			if(Assets.exists(path))
-			#end
-			{
-				var shit:DialogueFile = DialogueBoxPsych.parseDialogue(path);
-				if(shit.dialogue.length > 0) {
-					PlayState.instance.startDialogue(shit, music);
-					luaTrace('Successfully loaded dialogue', false, false, FlxColor.GREEN);
-					return true;
-				} else {
-					luaTrace('Your dialogue file is badly formatted!', false, false, FlxColor.RED);
-				}
-			} else {
-				luaTrace('Dialogue file not found', false, false, FlxColor.RED);
-				if(PlayState.instance.endingSong) {
-					PlayState.instance.endSong();
-				} else {
-					PlayState.instance.startCountdown();
-				}
-			}
-			return false;
-		});
 		Lua_helper.add_callback(lua, "startVideo", function(videoFile:String) {
 			#if VIDEOS_ALLOWED
 			if(FileSystem.exists(Paths.video(videoFile))) {
@@ -2721,12 +2495,7 @@ class FunkinLua {
 			haxeInterp.variables.set('ClientPrefs', ClientPrefs);
 			haxeInterp.variables.set('Character', Character);
 			haxeInterp.variables.set('Alphabet', Alphabet);
-			#if !flash
-			haxeInterp.variables.set('FlxRuntimeShader', FlxRuntimeShader);
-			haxeInterp.variables.set('ShaderFilter', openfl.filters.ShaderFilter);
-			#end
 			haxeInterp.variables.set('StringTools', StringTools);
-
 			haxeInterp.variables.set('setVar', function(name:String, value:Dynamic)
 			{
 				PlayState.instance.variables.set(name, value);
@@ -2784,32 +2553,10 @@ class FunkinLua {
 	{
 		return PlayState.instance.modchartTexts.exists(name) ? PlayState.instance.modchartTexts.get(name) : Reflect.getProperty(PlayState.instance, name);
 	}
-
-	public function getShader(obj:String):FlxRuntimeShader
-	{
-		var killMe:Array<String> = obj.split('.');
-		var leObj:FlxSprite = getObjectDirectly(killMe[0]);
-		if(killMe.length > 1) {
-			leObj = getVarInArray(getPropertyLoopThingWhatever(killMe), killMe[killMe.length-1]);
-		}
-
-		if(leObj != null) {
-			var shader:Dynamic = leObj.shader;
-			var shader:FlxRuntimeShader = shader;
-			return shader;
-		}
-		return null;
-	}
 	
 	function initLuaShader(name:String, ?glslVersion:Int = 120)
 	{
 		if(!ClientPrefs.shaders) return false;
-
-		if(PlayState.instance.runtimeShaders.exists(name))
-		{
-			luaTrace('Shader $name was already initialized!');
-			return true;
-		}
 
 		var foldersToCheck:Array<String> = [Paths.mods('shaders/')];
 		if(Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
@@ -2841,7 +2588,6 @@ class FunkinLua {
 
 				if(found)
 				{
-					PlayState.instance.runtimeShaders.set(name, [frag, vert]);
 					//trace('Found shader $name!');
 					return true;
 				}
@@ -2873,19 +2619,10 @@ class FunkinLua {
 		};
 	}
 
-	function loadFrames(spr:FlxSprite, image:String, spriteType:String)
-	{
-		switch(spriteType.toLowerCase().trim())
-		{
-			case "texture" | "textureatlas" | "tex":
-				spr.frames = AtlasFrameMaker.construct(image);
-
-			case "texture_noaa" | "textureatlas_noaa" | "tex_noaa":
-				spr.frames = AtlasFrameMaker.construct(image, null, true);
-
+	function loadFrames(spr:FlxSprite, image:String, spriteType:String) {
+		switch(spriteType.toLowerCase().trim()) {
 			case "packer" | "packeratlas" | "pac":
 				spr.frames = Paths.getPackerAtlas(image);
-
 			default:
 				spr.frames = Paths.getSparrowAtlas(image);
 		}

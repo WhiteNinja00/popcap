@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="jimmy-lightning.png"><SubTexture name="jimbo idle0000" x="646" y="960" width="340" height="448" frameX="-271" frameY="-364" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo idle0001" x="313" y="960" width="333" height="455" frameX="-270" frameY="-357" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo idle0002" x="1270" y="0" width="320" height="465" frameX="-273" frameY="-347" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo idle0003" x="651" y="485" width="317" height="469" frameX="-278" frameY="-343" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo down0000" x="0" y="960" width="313" height="457" frameX="-282" frameY="-355" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo down0001" x="1270" y="465" width="311" height="462" frameX="-284" frameY="-350" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo left0000" x="329" y="485" width="322" height="474" frameX="-263" frameY="-338" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo left0001" x="616" y="0" width="318" height="476" frameX="-270" frameY="-336" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo right0000" x="934" y="0" width="336" height="475" frameX="-268" frameY="-337" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo right0001" x="0" y="485" width="329" height="475" frameX="-268" frameY="-337" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo up0000" x="0" y="0" width="309" height="485" frameX="-276" frameY="-327" frameWidth="900" frameHeight="900" />
+<SubTexture name="jimbo up0001" x="309" y="0" width="307" height="481" frameX="-280" frameY="-331" frameWidth="900" frameHeight="900" />
+</TextureAtlas>

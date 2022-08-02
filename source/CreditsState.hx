@@ -81,6 +81,12 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+			['QMC'],
+			['Maddix',				'maddix',			'"i did music and chart" -maddix',								'https://twitter.com/ActuallyMaddix',	'66199E'],
+			['SuperFaMiO',			'paul',				'"Hello! It is me, Jerry Seinfeld. Bazinga!" -SuperFaMiO',		'https://twitter.com/SuperFaMiO',		'FF7900'],
+			['Hqc',					'hqc',				'"I DID MUSIc" -hqc',											'https://soundcloud.com/hqc-836782701',	'00F7FF'],
+			['White Ninja',			'whiteninja',		'"i was nerdin" -white ninja',									'https://whiteninja.carrd.co/',			'FFFFFF'],
+			[''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'river',			'Main Artist/Animator of Psych Engine',							'https://twitter.com/RiverOaken',		'B42F71'],

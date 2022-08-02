@@ -1,6 +1,5 @@
 package;
 
-import animateatlas.AtlasFrameMaker;
 import flixel.math.FlxPoint;
 import flixel.graphics.frames.FlxFrame.FlxFrameAngle;
 import openfl.geom.Rectangle;
@@ -355,7 +354,6 @@ class Paths
 			localTrackedAssets.push(path);
 			return currentTrackedAssets.get(path);
 		}
-		trace('oh no its returning null NOOOO');
 		return null;
 	}
 

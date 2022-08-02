@@ -3,7 +3,6 @@ package editors;
 #if desktop
 import Discord.DiscordClient;
 #end
-import animateatlas.AtlasFrameMaker;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -198,7 +197,9 @@ class CharacterEditorState extends MusicBeatState
 		addAnimationsUI();
 		UI_characterbox.selected_tab_id = 'Character';
 
+		FlxG.mouse.unload();
 		FlxG.mouse.visible = true;
+		FlxG.mouse.unload();
 		reloadCharacterOptions();
 
 		super.create();
@@ -832,20 +833,11 @@ class CharacterEditorState extends MusicBeatState
 			lastAnim = char.animation.curAnim.name;
 		}
 		var anims:Array<AnimArray> = char.animationsArray.copy();
-		if(Paths.fileExists('images/' + char.imageFile + '/Animation.json', TEXT)) {
-			char.frames = AtlasFrameMaker.construct(char.imageFile);
-		} else if(Paths.fileExists('images/' + char.imageFile + '.txt', TEXT)) {
+		if(Paths.fileExists('images/' + char.imageFile + '.txt', TEXT)) {
 			char.frames = Paths.getPackerAtlas(char.imageFile);
 		} else {
 			char.frames = Paths.getSparrowAtlas(char.imageFile);
 		}
-
-
-
-
-
-
-
 		if(char.animationsArray != null && char.animationsArray.length > 0) {
 			for (anim in char.animationsArray) {
 				var animAnim:String = '' + anim.anim;
@@ -1108,9 +1100,9 @@ class CharacterEditorState extends MusicBeatState
 				return;
 			}
 		}
-		FlxG.sound.muteKeys = TitleState.muteKeys;
-		FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
-		FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+		FlxG.sound.muteKeys = MainMenuState.muteKeys;
+		FlxG.sound.volumeDownKeys = MainMenuState.volumeDownKeys;
+		FlxG.sound.volumeUpKeys = MainMenuState.volumeUpKeys;
 
 		if(!charDropDown.dropPanel.visible) {
 			if (FlxG.keys.justPressed.ESCAPE) {

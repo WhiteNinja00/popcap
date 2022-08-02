@@ -273,7 +273,9 @@ class ChartingState extends MusicBeatState
 
 		if(curSec >= _song.notes.length) curSec = _song.notes.length - 1;
 
+		FlxG.mouse.unload();
 		FlxG.mouse.visible = true;
+		FlxG.mouse.unload();
 		//FlxG.save.bind('funkin', 'ninjamuffin99');
 
 		tempBpm = _song.bpm;
@@ -1627,9 +1629,9 @@ class ChartingState extends MusicBeatState
 		}
 
 		if(!blockInput) {
-			FlxG.sound.muteKeys = TitleState.muteKeys;
-			FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
-			FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+			FlxG.sound.muteKeys = MainMenuState.muteKeys;
+			FlxG.sound.volumeDownKeys = MainMenuState.volumeDownKeys;
+			FlxG.sound.volumeUpKeys = MainMenuState.volumeUpKeys;
 			for (dropDownMenu in blockPressWhileScrolling) {
 				if(dropDownMenu.dropPanel.visible) {
 					blockInput = true;

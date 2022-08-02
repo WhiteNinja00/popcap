@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				-31,
+				27
+			],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right"
+		},
+		{
+			"offsets": [
+				-9,
+				2
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle"
+		},
+		{
+			"offsets": [
+				12,
+				-61
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left"
+		},
+		{
+			"offsets": [
+				-31,
+				-3
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down"
+		},
+		{
+			"offsets": [
+				-31,
+				25
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/bookwom",
+	"position": [
+		137.5,
+		177.5
+	],
+	"healthicon": "worm",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		224,
+		0
+	],
+	"camera_position": [
+		40,
+		43.5
+	],
+	"sing_duration": 6.1,
+	"scale": 0.8
+}

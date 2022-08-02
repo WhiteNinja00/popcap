@@ -92,6 +92,7 @@ class ControlsSubState extends MusicBeatSubstate {
 
 			var optionText:Alphabet = new Alphabet(0, (10 * i), optionShit[i][0], (!isCentered || isDefaultKey), false);
 			optionText.isMenuItem = true;
+			optionText.iscontrols = true;
 			if(isCentered) {
 				optionText.screenCenter(X);
 				optionText.forceX = optionText.x;

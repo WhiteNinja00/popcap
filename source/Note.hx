@@ -274,6 +274,10 @@ class Note extends FlxSprite
 			earlyHitMult = 1;
 		}
 		x += offsetX;
+
+		if(PlayState.SONG.song == 'beg' || PlayState.SONG.song == 'pauperism') {
+			texture = 'coin_note';
+		}
 	}
 
 	var lastNoteOffsetXForPixelAutoAdjusting:Float = 0;

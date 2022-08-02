@@ -1,6 +1,5 @@
 package;
 
-import animateatlas.AtlasFrameMaker;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.effects.FlxTrail;
@@ -156,15 +155,10 @@ class Character extends FlxSprite
 				}
 
 				switch (spriteType){
-					
 					case "packer":
 						frames = Paths.getPackerAtlas(json.image);
-					
 					case "sparrow":
 						frames = Paths.getSparrowAtlas(json.image);
-					
-					case "texture":
-						frames = AtlasFrameMaker.construct(json.image);
 				}
 				imageFile = json.image;
 
@@ -376,7 +370,6 @@ class Character extends FlxSprite
 				animationNotes.push(songNotes);
 			}
 		}
-		TankmenBG.animationNotes = animationNotes;
 		animationNotes.sort(sortAnims);
 	}
 

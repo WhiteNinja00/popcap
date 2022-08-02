@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				-31,
+				27
+			],
+			"loop": false,
+			"anim": "singRIGHT",
+			"fps": 12,
+			"name": "jimbo right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-28,
+				27
+			],
+			"anim": "idle",
+			"fps": 12,
+			"name": "jimbo idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-29,
+				28
+			],
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "jimbo left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-30,
+				27
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "jimbo down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-32,
+				26
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "jimbo up",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/jimmy-lightning",
+	"position": [
+		-42.5,
+		-22.5
+	],
+	"healthicon": "jimmy",
+	"flip_x": false,
+	"healthbar_colors": [
+		231,
+		212,
+		49
+	],
+	"camera_position": [
+		40,
+		43.5
+	],
+	"sing_duration": 6.1,
+	"scale": 1.1
+}

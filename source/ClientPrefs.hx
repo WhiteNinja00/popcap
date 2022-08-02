@@ -30,7 +30,7 @@ class ClientPrefs {
 	public static var healthBarAlpha:Float = 1;
 	public static var controllerMode:Bool = false;
 	public static var hitsoundVolume:Float = 0;
-	public static var pauseMusic:String = 'Tea Time';
+	public static var pauseMusic:String = 'breakfast';
 	public static var checkForUpdates:Bool = true;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
@@ -103,8 +103,6 @@ class ClientPrefs {
 		FlxG.save.data.lowQuality = lowQuality;
 		FlxG.save.data.shaders = shaders;
 		FlxG.save.data.framerate = framerate;
-		//FlxG.save.data.cursing = cursing;
-		//FlxG.save.data.violence = violence;
 		FlxG.save.data.camZooms = camZooms;
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
@@ -115,9 +113,6 @@ class ClientPrefs {
 		FlxG.save.data.noReset = noReset;
 		FlxG.save.data.healthBarAlpha = healthBarAlpha;
 		FlxG.save.data.comboOffset = comboOffset;
-		FlxG.save.data.achievementsMap = Achievements.achievementsMap;
-		FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
-
 		FlxG.save.data.ratingOffset = ratingOffset;
 		FlxG.save.data.sickWindow = sickWindow;
 		FlxG.save.data.goodWindow = goodWindow;
@@ -132,7 +127,7 @@ class ClientPrefs {
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();
-		save.bind('controls_v2', 'ninjamuffin99'); //Placing this in a separate save so that it can be manually deleted without removing your Score and stuff
+		save.bind('controls_v2', 'ninjamuffin99');
 		save.data.customControls = keyBinds;
 		save.flush();
 		FlxG.log.add("Settings saved!");
@@ -281,12 +276,12 @@ class ClientPrefs {
 	public static function reloadControls() {
 		PlayerSettings.player1.controls.setKeyboardScheme(KeyboardScheme.Solo);
 
-		TitleState.muteKeys = copyKey(keyBinds.get('volume_mute'));
-		TitleState.volumeDownKeys = copyKey(keyBinds.get('volume_down'));
-		TitleState.volumeUpKeys = copyKey(keyBinds.get('volume_up'));
-		FlxG.sound.muteKeys = TitleState.muteKeys;
-		FlxG.sound.volumeDownKeys = TitleState.volumeDownKeys;
-		FlxG.sound.volumeUpKeys = TitleState.volumeUpKeys;
+		MainMenuState.muteKeys = copyKey(keyBinds.get('volume_mute'));
+		MainMenuState.volumeDownKeys = copyKey(keyBinds.get('volume_down'));
+		MainMenuState.volumeUpKeys = copyKey(keyBinds.get('volume_up'));
+		FlxG.sound.muteKeys = MainMenuState.muteKeys;
+		FlxG.sound.volumeDownKeys = MainMenuState.volumeDownKeys;
+		FlxG.sound.volumeUpKeys = MainMenuState.volumeUpKeys;
 	}
 	public static function copyKey(arrayToCopy:Array<FlxKey>):Array<FlxKey> {
 		var copiedArray:Array<FlxKey> = arrayToCopy.copy();

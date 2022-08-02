@@ -88,48 +88,11 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.changeValue = 0.1;
 		option.decimals = 1;
 		addOption(option);
-		
-		#if !mobile
-		var option:Option = new Option('FPS Counter',
-			'If unchecked, hides FPS Counter.',
-			'showFPS',
-			'bool',
-			true);
-		addOption(option);
-		option.onChange = onChangeFPSCounter;
-		#end
-		
-		var option:Option = new Option('Pause Screen Song:',
-			"What song do you prefer for the Pause Screen?",
-			'pauseMusic',
-			'string',
-			'Tea Time',
-			['None', 'Breakfast', 'Tea Time']);
-		addOption(option);
-		option.onChange = onChangePauseMusic;
-		
-		#if CHECK_FOR_UPDATES
-		var option:Option = new Option('Check for Updates',
-			'On Release builds, turn this on to check for updates when you start the game.',
-			'checkForUpdates',
-			'bool',
-			true);
-		addOption(option);
-		#end
 
 		super();
 	}
 
 	var changedMusic:Bool = false;
-	function onChangePauseMusic()
-	{
-		if(ClientPrefs.pauseMusic == 'None')
-			FlxG.sound.music.volume = 0;
-		else
-			FlxG.sound.playMusic(Paths.music(Paths.formatToSongPath(ClientPrefs.pauseMusic)));
-
-		changedMusic = true;
-	}
 
 	override function destroy()
 	{

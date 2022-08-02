@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				51,
+				70
+			],
+			"anim": "singLEFT",
+			"fps": 21,
+			"name": "Left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 16,
+			"name": "Idle",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				30,
+				10
+			],
+			"anim": "singDOWN",
+			"fps": 13,
+			"name": "Down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				34,
+				7
+			],
+			"anim": "singRIGHT",
+			"fps": 18,
+			"name": "Right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				19,
+				60
+			],
+			"anim": "singUP",
+			"fps": 12,
+			"name": "Up",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/BigMoneyb",
+	"position": [
+		-360,
+		0
+	],
+	"healthicon": "bigmoneyb",
+	"flip_x": true,
+	"healthbar_colors": [
+		223,
+		198,
+		71
+	],
+	"camera_position": [
+		260,
+		20
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}

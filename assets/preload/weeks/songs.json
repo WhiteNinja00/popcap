@@ -1,0 +1,12 @@
+{
+	"songs": [
+		["poverty-line", "bigmoney", [177, 177, 177]],
+		["chuzzlin", "dad", [255, 255, 255]],
+		["readnplead", "worm", [0, 224, 0]],
+		["bucket", "jimmy", [231, 212, 49]],
+		["pauperism", "bigmoney", [177, 177, 177]],
+		["bargain", "bigmoney", [177, 177, 177]],
+		["beg", "bigmoney", [177, 177, 177]]
+	],
+	"hideFreeplay": false
+}

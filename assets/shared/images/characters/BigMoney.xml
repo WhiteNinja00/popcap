@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="BigMoney.png">
+<SubTexture name="Idle0000" x="0" y="0" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Idle0001" x="904" y="0" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Idle0002" x="1808" y="0" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Idle0003" x="2712" y="0" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Down0000" x="0" y="904" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Down0001" x="904" y="904" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Left0000" x="1808" y="904" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Left0001" x="2712" y="904" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Left0002" x="0" y="1808" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Left0003" x="904" y="1808" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Up0000" x="1808" y="1808" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Up0001" x="2712" y="1808" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Right0000" x="0" y="2712" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Right0001" x="904" y="2712" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+<SubTexture name="Right0002" x="1808" y="2712" width="904" height="904" frameX="0" frameY="0" frameWidth="904" frameHeight="904" />
+</TextureAtlas>

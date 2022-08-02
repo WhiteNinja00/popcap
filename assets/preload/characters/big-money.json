@@ -1,0 +1,78 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				51,
+				70
+			],
+			"loop": false,
+			"fps": 21,
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Left"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"fps": 16,
+			"anim": "idle",
+			"indices": [],
+			"name": "Idle"
+		},
+		{
+			"offsets": [
+				30,
+				10
+			],
+			"loop": false,
+			"fps": 13,
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "Down"
+		},
+		{
+			"offsets": [
+				34,
+				7
+			],
+			"loop": false,
+			"fps": 18,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Right"
+		},
+		{
+			"offsets": [
+				19,
+				60
+			],
+			"loop": false,
+			"fps": 12,
+			"anim": "singUP",
+			"indices": [],
+			"name": "Up"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/BigMoney",
+	"position": [
+		-360,
+		0
+	],
+	"healthicon": "bigmoney",
+	"flip_x": true,
+	"healthbar_colors": [
+		177,
+		177,
+		177
+	],
+	"camera_position": [
+		260,
+		20
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}
