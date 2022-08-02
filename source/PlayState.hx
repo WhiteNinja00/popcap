@@ -254,8 +254,12 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		if(SONG.song == 'beg' || SONG.song == 'pauperism') {
+		if(SONG.song == 'beg') {
 			mechanictimelol = true;
+		} else if(SONG.song == 'pauperism') {
+			mechanictimelol = true;
+		} else {
+			mechanictimelol = false;
 		}
 		Paths.clearStoredMemory();
 
